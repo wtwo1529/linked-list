@@ -94,7 +94,7 @@ export default class LinkedList {
     if (this.headNode) {
       let currNode = this.headNode;
       while (currNode) {
-        let str = `${currNode.val} -> `;
+        let str = `( ${currNode.val} ) -> `;
         lstStr = lstStr.concat(str);
         currNode = currNode.next;
       }
