@@ -48,7 +48,7 @@ export default class LinkedList {
     if (this.headNode) {
       let i = 0;
       let currNode = this.headNode;
-      while (currNode.next) {
+      while (currNode) {
         if (i == index) return currNode;
         currNode = currNode.next;
         i++;
@@ -101,5 +101,32 @@ export default class LinkedList {
       lstStr = lstStr.concat(`null`);
     }
     return lstStr || null;
+  }
+  insertAt(idx, val) {
+    if (idx == 0) {
+      this.prepend(val);
+      return;
+    } else if (idx == this.size() - 1) {
+      this.append(val);
+      return;
+    }
+    let node = this.at(idx - 1);
+    let tmp = new Node(val);
+    tmp.next = node.next;
+    node.next = tmp;
+  }
+  removeAt(idx) {
+    if (idx == 0) {
+      this.headNode = node.next;
+    } else if (idx == this.size() - 1) {
+      this.pop();
+      return;
+    }
+    let node = this.at(idx - 1);
+    if (node.next.next) {
+      node.next = node.next.next;
+    } else {
+      node.next = null;
+    }
   }
 }
